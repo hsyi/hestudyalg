@@ -1,10 +1,456 @@
-** Micro Mezz Macro Flation -- Overheated Economy ., Last Update: Nov. 7th 2013 **/ //{ 23 /** Header .. **/ //{4 #pragma comment(linker, ”/STACK:36777216”)5 //#pragma GCC optimize (”O2”)6 #define LOCAL7 //#include ”testlib.h”8 #include <functional>9 #include <algorithm>10 #include <iostream>11 #include <fstream>12 #include <sstream>13 #include <iomanip>14 #include <numeric>15 #include <cstring>16 #include <climits>17 #include <cassert>18 #include <complex>19 #include <cstdio>20 #include <string>21 #include <vector>22 #include <bitset>23 #include <queue>24 #include <stack>25 #include <cmath>26 #include <ctime>27 #include <list>28 #include <set>29 #include <map>3031 //#include <tr1/unordered_set>32 //#include <tr1/unordered_map>33 //#include <array>3435 using namespace std; 3637 #define REP(i, n) for (int i=0;i<n;++i)38 #define FOR(i, a, b) for (int i=a;i<b;++i)39 #define DWN(i, b, a) for (int i=b-1;i>=a;--i)40 #define REP_1(i, n) for (int i=1;i<=n;++i)41 #define FOR_1(i, a, b) for (int i=a;i<=b;++i)42 #define DWN_1(i, b, a) for (int i=b;i>=a;--i)43 #define REP_C(i, n) for (int n____=n,i=0;i<n____;++i)44 #define FOR_C(i, a, b) for (int b____=b,i=a;i<b____;++i)45 #define DWN_C(i, b, a) for (int a____=a,i=b-1;i>=a____;--i)46 #define REP_N(i, n) for (i=0;i<n;++i)47 #define FOR_N(i, a, b) for (i=a;i<b;++i)48 #define DWN_N(i, b, a) for (i=b-1;i>=a;--i)7
-49 #define REP_1_C(i, n) for (int n____=n,i=1;i<=n____;++i)50 #define FOR_1_C(i, a, b) for (int b____=b,i=a;i<=b____;++i)51 #define DWN_1_C(i, b, a) for (int a____=a,i=b;i>=a____;--i)52 #define REP_1_N(i, n) for (i=1;i<=n;++i)53 #define FOR_1_N(i, a, b) for (i=a;i<=b;++i)54 #define DWN_1_N(i, b, a) for (i=b;i>=a;--i)55 #define REP_C_N(i, n) for (int n____=(i=0,n);i<n____;++i)56 #define FOR_C_N(i, a, b) for (int b____=(i=0,b);i<b____;++i)57 #define DWN_C_N(i, b, a) for (int a____=(i=b-1,a);i>=a____;--i)58 #define REP_1_C_N(i, n) for (int n____=(i=1,n);i<=n____;++i)59 #define FOR_1_C_N(i, a, b) for (int b____=(i=1,b);i<=b____;++i)60 #define DWN_1_C_N(i, b, a) for (int a____=(i=b,a);i>=a____;--i)6162 #define ECH(it, A) for (__typeof(A.begin()) it=A.begin(); it != A.end(); ++it)63 #define REP_S(i, str) for (char*i=str;*i;++i)64 #define REP_L(i, hd, nxt) for (int i=hd;i;i=nxt[i])65 #define REP_G(i, u) REP_L(i,hd[u],suc)66 #define REP_SS(x, s) for (int x=s;x;x=(x-1)&s)67 #define DO(n) for ( int ____n = n; ____n-->0; )68 #define REP_2(i, j, n, m) REP(i, n) REP(j, m)69 #define REP_2_1(i, j, n, m) REP_1(i, n) REP_1(j, m)70 #define REP_3(i, j, k, n, m, l) REP(i, n) REP(j, m) REP(k, l)71 #define REP_3_1(i, j, k, n, m, l) REP_1(i, n) REP_1(j, m) REP_1(k, l)72 #define REP_4(i, j, k, ii, n, m, l, nn) REP(i, n) REP(j, m) REP(k, l) REP(ii, nn)73 #define REP_4_1(i, j, k, ii, n, m, l, nn) REP_1(i, n) REP_1(j, m) REP_1(k, l) REP_1(ii, nn)7475 #define ALL(A) A.begin(), A.end()76 #define LLA(A) A.rbegin(), A.rend()77 #define CPY(A, B) memcpy(A, B, sizeof(A))78 #define INS(A, P, B) A.insert(A.begin() + P, B)79 #define ERS(A, P) A.erase(A.begin() + P)80 #define LBD(A, x) (lower_bound(ALL(A), x) - A.begin())81 #define UBD(A, x) (lower_bound(ALL(A), x) - A.begin())82 #define CTN(T, x) (T.find(x) != T.end())83 #define SZ(A) int((A).size())84 #define PB push_back85 #define MP(A, B) make_pair(A, B)86 #define PTT pair<T, T>87 #define Ts *this88 #define rTs return Ts89 #define fi first90 #define se second91 #define re real()92 #define im imag()9394 #define Rush for(int ____T=RD(); ____T--;)95 #define Display(A, n, m) { \96 REP(i, n){ \97 REP(j, m-1) cout << A[i][j] << ” ”; \98 cout << A[i][m-1] << endl; \99 } \100 }101 #define Display_1(A, n, m) { \102 REP_1(i, n){ \103 REP_1(j, m-1) cout << A[i][j] << ” ”; \104 cout << A[i][m] << endl; \105 } \106 }107108 typedef long long LL;109 //typedef long double DB;110 typedef double DB;111 typedef unsigned uint;112 typedef unsigned long long uLL;113114 typedef vector<int> VI;115 typedef vector<char> VC;CMU_xiaodao 8
-116 typedef vector<string> VS;117 typedef vector<LL> VL;118 typedef vector<DB> VF;119 typedef set<int> SI;120 typedef set<string> SS;121 typedef map<int, int> MII;122 typedef map<string, int> MSI;123 typedef pair<int, int> PII;124 typedef pair<LL, LL> PLL;125 typedef vector<PII> VII;126 typedef vector<VI> VVI;127 typedef vector<VII> VVII;128129 template<class T> inline T& RD(T &);130 template<class T> inline void OT(const T &);131 //inline int RD(){int x; return RD(x);}132 inline LL RD(){LL x; return RD(x);}133 inline DB& RF(DB &);134 inline DB RF(){DB x; return RF(x);}135 inline char* RS(char *s);136 inline char& RC(char &c);137 inline char RC();138 inline char& RC(char &c){scanf(” %c”, &c); return c;}139 inline char RC(){char c; return RC(c);}140 //inline char& RC(char &c){c = getchar(); return c;}141 //inline char RC(){return getchar();}142143 template<class T> inline T& RDD(T &);144 inline LL RDD(){LL x; return RDD(x);}145146 template<class T0, class T1> inline T0& RD(T0 &x0, T1 &x1){RD(x0), RD(x1); return x0;}147 template<class T0, class T1, class T2> inline T0& RD(T0 &x0, T1 &x1, T2 &x2){RD(x0), RD(x1), RD(x2); return x0;}148 template<class T0, class T1, class T2, class T3> inline T0& RD(T0 &x0, T1 &x1, T2 &x2, T3 &x3){RD(x0), RD(x1), RD(x2), RD(x3); return x0;}149 template<class T0, class T1, class T2, class T3, class T4> inline T0& RD(T0 &x0, T1 &x1, T2 &x2, T3 &x3, T4 &x4){RD(x0), RD(x1), RD(x2), RD(x3), RD(x4); return x0;}150 template<class T0, class T1, class T2, class T3, class T4, class T5> inline T0& RD(T0 &x0, T1 &x1, T2 &x2, T3 &x3, T4 &x4, T5 &x5){RD(x0), RD(x1), RD(x2), RD(x3), RD(x4), RD(x5); return x0;}151 template<class T0, class T1, class T2, class T3, class T4, class T5, class T6> inline T0& RD(T0 &x0, T1 &x1, T2 &x2, T3 &x3, T4 &x4, T5 &x5, T6 &x6){RD(x0), RD(x1), RD(x2), RD(x3), RD(x4), RD(x5), RD(x6); return x0;}152 template<class T0, class T1> inline void OT(const T0 &x0, const T1 &x1){OT(x0), OT(x1);}153 template<class T0, class T1, class T2> inline void OT(const T0 &x0, const T1 &x1, const T2 &x2){OT(x0), OT(x1), OT(x2);}154 template<class T0, class T1, class T2, class T3> inline void OT(const T0 &x0, const T1 &x1, const T2 &x2, const T3 &x3){OT(x0),OT(x1), OT(x2), OT(x3);}155 template<class T0, class T1, class T2, class T3, class T4> inline void OT(const T0 &x0, const T1 &x1, const T2 &x2, const T3 &x3,const T4 &x4){OT(x0), OT(x1), OT(x2), OT(x3), OT(x4);}156 template<class T0, class T1, class T2, class T3, class T4, class T5> inline void OT(const T0 &x0, const T1 &x1, const T2 &x2, constT3 &x3, const T4 &x4, const T5 &x5){OT(x0), OT(x1), OT(x2), OT(x3), OT(x4), OT(x5);}157 template<class T0, class T1, class T2, class T3, class T4, class T5, class T6> inline void OT(const T0 &x0, const T1 &x1, const T2 &x2, const T3 &x3, const T4 &x4, const T5 &x5, const T6 &x6){OT(x0), OT(x1), OT(x2), OT(x3), OT(x4), OT(x5), OT(x6);}158 inline char& RC(char &a, char &b){RC(a), RC(b); return a;}159 inline char& RC(char &a, char &b, char &c){RC(a), RC(b), RC(c); return a;}160 inline char& RC(char &a, char &b, char &c, char &d){RC(a), RC(b), RC(c), RC(d); return a;}161 inline char& RC(char &a, char &b, char &c, char &d, char &e){RC(a), RC(b), RC(c), RC(d), RC(e); return a;}162 inline char& RC(char &a, char &b, char &c, char &d, char &e, char &f){RC(a), RC(b), RC(c), RC(d), RC(e), RC(f); return a;}163 inline char& RC(char &a, char &b, char &c, char &d, char &e, char &f, char &g){RC(a), RC(b), RC(c), RC(d), RC(e), RC(f), RC(g);return a;}164 inline DB& RF(DB &a, DB &b){RF(a), RF(b); return a;}165 inline DB& RF(DB &a, DB &b, DB &c){RF(a), RF(b), RF(c); return a;}166 inline DB& RF(DB &a, DB &b, DB &c, DB &d){RF(a), RF(b), RF(c), RF(d); return a;}167 inline DB& RF(DB &a, DB &b, DB &c, DB &d, DB &e){RF(a), RF(b), RF(c), RF(d), RF(e); return a;}168 inline DB& RF(DB &a, DB &b, DB &c, DB &d, DB &e, DB &f){RF(a), RF(b), RF(c), RF(d), RF(e), RF(f); return a;}169 inline DB& RF(DB &a, DB &b, DB &c, DB &d, DB &e, DB &f, DB &g){RF(a), RF(b), RF(c), RF(d), RF(e), RF(f), RF(g); return a;}170 inline void RS(char *s1, char *s2){RS(s1), RS(s2);}171 inline void RS(char *s1, char *s2, char *s3){RS(s1), RS(s2), RS(s3);}172 template<class T0,class T1>inline void RDD(T0&a, T1&b){RDD(a),RDD(b);}173 template<class T0,class T1,class T2>inline void RDD(T0&a, T1&b, T2&c){RDD(a),RDD(b),RDD(c);}CMU_xiaodao 9
-174175 template<class T> inline void RST(T &A){memset(A, 0, sizeof(A));}176 template<class T> inline void FLC(T &A, int x){memset(A, x, sizeof(A));}177 template<class T> inline void CLR(T &A){A.clear();}178179 template<class T0, class T1> inline void RST(T0 &A0, T1 &A1){RST(A0), RST(A1);}180 template<class T0, class T1, class T2> inline void RST(T0 &A0, T1 &A1, T2 &A2){RST(A0), RST(A1), RST(A2);}181 template<class T0, class T1, class T2, class T3> inline void RST(T0 &A0, T1 &A1, T2 &A2, T3 &A3){RST(A0), RST(A1), RST(A2),RST(A3);}182 template<class T0, class T1, class T2, class T3, class T4> inline void RST(T0 &A0, T1 &A1, T2 &A2, T3 &A3, T4 &A4){RST(A0),RST(A1), RST(A2), RST(A3), RST(A4);}183 template<class T0, class T1, class T2, class T3, class T4, class T5> inline void RST(T0 &A0, T1 &A1, T2 &A2, T3 &A3, T4 &A4, T5&A5){RST(A0), RST(A1), RST(A2), RST(A3), RST(A4), RST(A5);}184 template<class T0, class T1, class T2, class T3, class T4, class T5, class T6> inline void RST(T0 &A0, T1 &A1, T2 &A2, T3 &A3, T4&A4, T5 &A5, T6 &A6){RST(A0), RST(A1), RST(A2), RST(A3), RST(A4), RST(A5), RST(A6);}185 template<class T0, class T1> inline void FLC(T0 &A0, T1 &A1, int x){FLC(A0, x), FLC(A1, x);}186 template<class T0, class T1, class T2> inline void FLC(T0 &A0, T1 &A1, T2 &A2, int x){FLC(A0, x), FLC(A1, x), FLC(A2, x);}187 template<class T0, class T1, class T2, class T3> inline void FLC(T0 &A0, T1 &A1, T2 &A2, T3 &A3, int x){FLC(A0, x), FLC(A1, x),FLC(A2, x), FLC(A3, x);}188 template<class T0, class T1, class T2, class T3, class T4> inline void FLC(T0 &A0, T1 &A1, T2 &A2, T3 &A3, T4 &A4, int x){FLC(A0, x), FLC(A1, x), FLC(A2, x), FLC(A3, x), FLC(A4, x);}189 template<class T0, class T1, class T2, class T3, class T4, class T5> inline void FLC(T0 &A0, T1 &A1, T2 &A2, T3 &A3, T4 &A4, T5&A5, int x){FLC(A0, x), FLC(A1, x), FLC(A2, x), FLC(A3, x), FLC(A4, x), FLC(A5, x);}190 template<class T0, class T1, class T2, class T3, class T4, class T5, class T6> inline void FLC(T0 &A0, T1 &A1, T2 &A2, T3 &A3, T4&A4, T5 &A5, T6 &A6, int x){FLC(A0, x), FLC(A1, x), FLC(A2, x), FLC(A3, x), FLC(A4, x), FLC(A5, x), FLC(A6, x);}191 template<class T> inline void CLR(priority_queue<T, vector<T>, less<T> > &Q){while (!Q.empty()) Q.pop();}192 template<class T> inline void CLR(priority_queue<T, vector<T>, greater<T> > &Q){while (!Q.empty()) Q.pop();}193 template<class T> inline void CLR(stack<T> &S){while (!S.empty()) S.pop();}194195 template<class T0, class T1> inline void CLR(T0 &A0, T1 &A1){CLR(A0), CLR(A1);}196 template<class T0, class T1, class T2> inline void CLR(T0 &A0, T1 &A1, T2 &A2){CLR(A0), CLR(A1), CLR(A2);}197 template<class T0, class T1, class T2, class T3> inline void CLR(T0 &A0, T1 &A1, T2 &A2, T3 &A3){CLR(A0), CLR(A1), CLR(A2),CLR(A3);}198 template<class T0, class T1, class T2, class T3, class T4> inline void CLR(T0 &A0, T1 &A1, T2 &A2, T3 &A3, T4 &A4){CLR(A0),CLR(A1), CLR(A2), CLR(A3), CLR(A4);}199 template<class T0, class T1, class T2, class T3, class T4, class T5> inline void CLR(T0 &A0, T1 &A1, T2 &A2, T3 &A3, T4 &A4, T5&A5){CLR(A0), CLR(A1), CLR(A2), CLR(A3), CLR(A4), CLR(A5);}200 template<class T0, class T1, class T2, class T3, class T4, class T5, class T6> inline void CLR(T0 &A0, T1 &A1, T2 &A2, T3 &A3, T4&A4, T5 &A5, T6 &A6){CLR(A0), CLR(A1), CLR(A2), CLR(A3), CLR(A4), CLR(A5), CLR(A6);}201 template<class T> inline void CLR(T &A, int n){REP(i, n) CLR(A[i]);}202203 template<class T> inline bool EPT(T &a){return a.empty();}204 template<class T> inline T& SRT(T &A){sort(ALL(A)); return A;}205 template<class T, class C> inline T& SRT(T &A, C B){sort(ALL(A), B); return A;}206 template<class T> inline T& RVS(T &A){reverse(ALL(A)); return A;}207 template<class T> inline T& UNQQ(T &A){A.resize(unique(ALL(A))-A.begin());return A;}208 template<class T> inline T& UNQ(T &A){SRT(A);return UNQQ(A);}209210211 //}212213 /** Constant List .. **/ //{ 214215 const int MOD = int(1e9) + 7;216 //int MOD = 99990001;217 const int INF = 0x3f3f3f3f;218 const LL INFF = 0x3f3f3f3f3f3f3f3fLL;219 const DB EPS = 1e-9;220 const DB OO = 1e20;221 const DB PI = acos(-1.0); //M_PI;222223 const int dx[] = {-1, 0, 1, 0};224 const int dy[] = {0, 1, 0, -1};225226 //}227228 /** Add On .. **/ //{CMU_xiaodao 10
-229 // <<= ’0. Nichi Joo ., //{ 230231 template<class T> inline T& checkMin(T &a,const T b){if (b<a) a=b;return a;}232 template<class T> inline T& checkMax(T &a,const T b){if (a<b) a=b;return a;}233 template<class T> inline T& checkMin(T &a, T &b, const T x){checkMin(a, x), checkMin(b, x);return a;}234 template<class T> inline T& checkMax(T &a, T &b, const T x){checkMax(a, x), checkMax(b, x);return a;}235 template <class T, class C> inline T& checkMin(T& a, const T b, C c){if (c(b,a)) a = b;return a;}236 template <class T, class C> inline T& checkMax(T& a, const T b, C c){if (c(a,b)) a = b;return a;}237 template<class T> inline T min(T a, T b, T c){return min(min(a, b), c);}238 template<class T> inline T max(T a, T b, T c){return max(max(a, b), c);}239 template<class T> inline T min(T a, T b, T c, T d){return min(min(a, b), min(c, d));}240 template<class T> inline T max(T a, T b, T c, T d){return max(max(a, b), max(c, d));}241 template<class T> inline T min(T a, T b, T c, T d, T e){return min(min(min(a,b),min(c,d)),e);}242 template<class T> inline T max(T a, T b, T c, T d, T e){return max(max(max(a,b),max(c,d)),e);}243 template<class T> inline T sqr(T a){return a*a;}244 template<class T> inline T cub(T a){return a*a*a;}245 template<class T> inline T ceil(T x, T y){return (x - 1) / y + 1;}246 template<class T> T abs(T x){return x>0?x:-x;}247 inline int sgn(DB x){return x < -EPS ? -1 : x > EPS;}248 inline int sgn(DB x, DB y){return sgn(x - y);}249250 inline DB cos(DB a, DB b, DB c){return (sqr(a)+sqr(b)-sqr(c))/(2*a*b);}251 inline DB cot(DB x){return 1./tan(x);};252 inline DB sec(DB x){return 1./cos(x);};253 inline DB csc(DB x){return 1./sin(x);};254255 //}256 // <<= ’1. Bitwise Operation ., //{257 namespace BO{258259 inline bool _1(int x, int i){return bool(x&1<<i);}260 inline bool _1(LL x, int i){return bool(x&1LL<<i);}261 inline LL _1(int i){return 1LL<<i;}262 inline LL _U(int i){return _1(i) - 1;};263264 inline int reverse_bits(int x){265 x = ((x >> 1) & 0x55555555) | ((x << 1) & 0xaaaaaaaa);266 x = ((x >> 2) & 0x33333333) | ((x << 2) & 0xcccccccc);267 x = ((x >> 4) & 0x0f0f0f0f) | ((x << 4) & 0xf0f0f0f0);268 x = ((x >> 8) & 0x00ff00ff) | ((x << 8) & 0xff00ff00);269 x = ((x >>16) & 0x0000ffff) | ((x <<16) & 0xffff0000);270 return x;271 }272273 inline LL reverse_bits(LL x){274 x = ((x >> 1) & 0x5555555555555555LL) | ((x << 1) & 0xaaaaaaaaaaaaaaaaLL);275 x = ((x >> 2) & 0x3333333333333333LL) | ((x << 2) & 0xccccccccccccccccLL);276 x = ((x >> 4) & 0x0f0f0f0f0f0f0f0fLL) | ((x << 4) & 0xf0f0f0f0f0f0f0f0LL);277 x = ((x >> 8) & 0x00ff00ff00ff00ffLL) | ((x << 8) & 0xff00ff00ff00ff00LL);278 x = ((x >>16) & 0x0000ffff0000ffffLL) | ((x <<16) & 0xffff0000ffff0000LL);279 x = ((x >>32) & 0x00000000ffffffffLL) | ((x <<32) & 0xffffffff00000000LL);280 return x;281 }282283 template<class T> inline bool odd(T x){return x&1;}284 template<class T> inline bool even(T x){return !odd(x);}285 template<class T> inline T low_bit(T x) {return x & -x;}286 template<class T> inline T high_bit(T x) {T p = low_bit(x);while (p != x) x -= p, p = low_bit(x);return p;}287 template<class T> inline T cover_bit(T x){T p = 1; while (p < x) p <<= 1;return p;}288 template<class T> inline int cover_idx(T x){int p = 0; while (_1(p) < x ) ++p; return p;}289290 inline int clz(int x){return __builtin_clz(x);}291 inline int clz(LL x){return __builtin_clzll(x);}292 inline int ctz(int x){return __builtin_ctz(x);}293 inline int ctz(LL x){return __builtin_ctzll(x);}294 inline int lg2(int x){return !x ? -1 : 31 - clz(x);}295 inline int lg2(LL x){return !x ? -1 : 63 - clz(x);}CMU_xiaodao 11
-296 inline int low_idx(int x){return !x ? -1 : ctz(x);}297 inline int low_idx(LL x){return !x ? -1 : ctz(x);}298 inline int high_idx(int x){return lg2(x);}299 inline int high_idx(LL x){return lg2(x);}300 inline int parity(int x){return __builtin_parity(x);}301 inline int parity(LL x){return __builtin_parityll(x);}302 inline int count_bits(int x){return __builtin_popcount(x);}303 inline int count_bits(LL x){return __builtin_popcountll(x);}304305 } using namespace BO;//}306 // <<= ’9. Comutational Geometry .,//{307 namespace CG{308309 #define cPo const Po&310 #define cLine const Line&311 #define cSeg const Seg&312313 inline DB dist2(DB x,DB y){return sqr(x)+sqr(y);} 314315 struct Po{316 DB x,y;Po(DB x=0,DB y=0):x(x),y(y){}317318 void in(){RF(x,y);}void out(){printf(”(%.2f,%.2f)”,x,y);}319 inline friend istream&operator>>(istream&i,Po&p){return i>>p.x>>p.y;}320 inline friend ostream&operator<<(ostream&o,Po p){return o<<”(”<<p.x<<”, ”<<p.y<< ”)”;}321322 Po operator-()const{return Po(-x,-y);}323 Po&operator+=(cPo p){x+=p.x,y+=p.y;rTs;}Po&operator-=(cPo p){x-=p.x,y-=p.y;rTs;}324 Po&operator*=(DB k){x*=k,y*=k;rTs;}Po&operator/=(DB k){x/=k,y/=k;rTs;}325 Po&operator*=(cPo p){rTs=Ts*p;}Po&operator/=(cPo p){rTs=Ts/p;}326 Po operator+(cPo p)const{return Po(x+p.x,y+p.y);}Po operator-(cPo p)const{return Po(x-p.x,y-p.y);}327 Po operator*(DB k)const{return Po(x*k,y*k);}Po operator/(DB k)const{return Po(x/k,y/k);}328 Po operator*(cPo p)const{return Po(x*p.x-y*p.y,y*p.x+x*p.y);}Po operator/(cPo p)const{return Po(x*p.x+y*p.y,y*p.x-x*p.y)/p.len2();}329330 bool operator==(cPo p)const{return!sgn(x,p.x)&&!sgn(y,p.y);};bool operator!=(cPo p)const{return sgn(x,p.x)||sgn(y,p.y);}331 bool operator<(cPo p)const{return sgn(x,p.x)<0||!sgn(x,p.x)&&sgn(y,p.y)<0;}bool operator<=(cPo p)const{return sgn(x,p.x)<0||!sgn(x,p.x)&&sgn(y,p.y)<=0;}332 bool operator>(cPo p)const{return!(Ts<=p);}bool operator >=(cPo p)const{return!(Ts<p);}333334 DB len2()const{return dist2(x,y);}DB len()const{return sqrt(len2());}DB arg()const{return atan2(y,x);}335 Po&_1(){rTs/=len();}Po&conj(){y=-y;rTs;}Po&lt(){swap(x,y),x=-x;rTs;}Po&rt(){swap(x,y),y=-y;rTs;}336 Po&rot(DB a,cPo o=Po()){Ts-=o;Ts*=Po(cos(a),sin(a));rTs+=o;}337 };338339 inline DB dot(DB x1,DB y1,DB x2,DB y2){return x1*x2+y1*y2;}340 inline DB dot(cPo a,cPo b){return dot(a.x,a.y,b.x,b.y);}341 inline DB dot(cPo p0,cPo p1,cPo p2){return dot(p1-p0,p2-p0);}342 inline DB det(DB x1,DB y1,DB x2,DB y2){return x1*y2-x2*y1;}343 inline DB det(cPo a,cPo b){return det(a.x,a.y,b.x,b.y);}344 inline DB det(cPo p0,cPo p1,cPo p2){return det(p1-p0,p2-p0);}345 inline DB ang(cPo p0,cPo p1){return acos(dot(p0,p1)/p0.len()/p1.len());}346 inline DB ang(cPo p0,cPo p1,cPo p2){return ang(p1-p0,p2-p0);}347 inline DB ang(cPo p0,cPo p1,cPo p2,cPo p3){return ang(p1-p0,p3-p2);}348 inline DB dist2(const Po &a, const Po &b){return dist2(a.x-b.x, a.y-b.y);}349 template<class T1, class T2> inline int dett(const T1 &x, const T2 &y){return sgn(det(x, y));}350 template<class T1, class T2, class T3> inline int dett(const T1 &x, const T2 &y, const T3 &z){return sgn(det(x, y, z));}351 template<class T1, class T2, class T3, class T4> inline int dett(const T1 &x, const T2 &y, const T3 &z, const T4 &w){return sgn(det(x, y, z, w));}352 template<class T1, class T2> inline int dott(const T1 &x, const T2 &y){return sgn(dot(x, y));}353 template<class T1, class T2, class T3> inline int dott(const T1 &x, const T2 &y, const T3 &z){return sgn(dot(x, y, z));}354 template<class T1, class T2, class T3, class T4> inline int dott(const T1 &x, const T2 &y, const T3 &z, const T4 &w){return sgn(dot(x, y, z, w));}355 template<class T1, class T2> inline DB arg(const T1 &x, const T2 &y){DB a=ang(x,y);return~dett(x,y)?a:2*PI-a;}356 template<class T1, class T2, class T3> inline DB arg(const T1 &x, const T2 &y, const T3 &z){DB a=ang(x,y,z);return~dett(x,y,z)?a:2*PI-a;}CMU_xiaodao 12
-357 template<class T1, class T2, class T3, class T4> inline DB arg(const T1 &x, const T2 &y, const T3 &z, const T4 &w){DB a=ang(x,y,z, w);return~dett(x,y,z,w)?a:2*PI-a;}358 template<class T1, class T2> inline DB dist(const T1 &x, const T2 &y){return sqrt(dist2(x, y));}359 template<class T1, class T2, class T3> inline DB dist(const T1 &x, const T2 &y, const T3 &z){return sqrt(dist2(x, y, z));}360 inline Po _1(Po p){return p._1();}inline Po conj(Po p){return p.conj();}361 inline Po lt(Po p){return p.lt();}inline Po rt(Po p){return p.rt();}362 inline Po rot(Po p,DB a,cPo o=Po()){return p.rot(a,o);}363 inline Po operator *(DB k,cPo p){return p*k;}364 inline Po operator /(DB k,cPo p){return conj(p)*k/p.len2();}365366 typedef vector<Po> VP; 367368 struct Line{369 Po a,b;Line(cPo a=Po(),cPo b=Po()):a(a),b(b){}370 Line(DB x0,DB y0,DB x1,DB y1):a(Po(x0,y0)),b(Po(x1,y1)){}371 Line(cLine l):a(l.a),b(l.b){}372373 //Ax+By+C=0374 Line(DB A,DB B,DB C){375 C=-C;if(!::sgn(A))a=Po(0,C/B),b=Po(1,C/B);376 else if(!::sgn(B))a=Po(C/A,0),b=Po(C/A,1);377 else a=Po(0,C/B),b=Po(1,(C-A)/B);378 }379380 void in(){a.in(),b.in();}381 inline friend istream&operator>>(istream&i,Line& p){return i>>p.a>>p.b;}382 inline friend ostream&operator<<(ostream&o,Line p){return o<<p.a<<”-”<< p.b;}383384 Line operator+(cPo x)const{return Line(a+x,b+x);}385 Line operator-(cPo x)const{return Line(a-x,b-x);}386 Line operator*(DB k)const{return Line(a*k,b*k);}387 Line operator/(DB k)const{return Line(a/k,b/k);}388389 Po operator*(cLine)const;390 Po d()const{return b-a;}DB len2()const{return d().len2();}DB len()const{return d().len();}DB arg()const{return d().arg();}391392 int sgn(cPo p)const{return dett(a, b, p);}393 int sgn(cLine)const;394395 bool sameSgn(cPo p1,cPo p2)const{return sgn(p1)==sgn(p2);}396 void getEquation(DB&K,DB&B)const{397 K = ::sgn(a.x, b.x) ? (b.y-a.y)/(b.x-a.x) : OO;398 B = a.y - K*a.x;399 }400 void getEquation(DB&A,DB&B,DB&C)const{A=a.y-b.y,B=b.x-a.x,C=det(a, b);}401402 Line&push(DB r){ // 正数右手螺旋向里403404 }405 };406407 inline408 inline409 inline410 inline411 inline412 inline413 inline414 inline415 inline416417 inline418 inline419 inline420 inline421 inline422Po v=d()._1().lt()*r;a+=v,b+=v; rTs;DB dot(cLine l1,cLine l2){return dot(l1.d(),l2.d());} DB dot(cLine l,cPo p){return dot(l.a,l.b,p);}DB dot(cPo p,cLine l){return dot(p,l.a,l.b);}DB det(cLine l1,cLine l2){return det(l1.d(),l2.d());} DB det(cLine l,cPo p){return det(l.a,l.b,p);}DB det(cPo p,cLine l){return det(p,l.a,l.b);}DB ang(cLine l0,cLine l1){return ang(l0.d(),l1.d());} DB ang(cLine l,cPo p){return ang(l.a,l.b,p);}DB ang(cPo p,cLine l){return ang(p,l.a,l.b);}int Line::sgn(cLine l)const{return dett(Ts, l);}Po Line::operator*(cLine l)const{return a+d()*det(a,l)/det(Ts,l);} Po operator&(cPo p,cLine l){return l*Line(p,p+l.d().lt());}Po operator%(cPo p,cLine l){return p&l*2-p;}Line push(Line l, DB r){return l.push(r);}CMU_xiaodao 13
-423424 struct Seg: public Line{425 Seg(cPo a=Po(),cPo b=Po()):Line(a,b){}426 Seg(DB x0,DB y0,DB x1,DB y1):Line(x0,y0,x1,y1){}427 Seg(cLine l):Line(l){}428 Seg(const Po &a,DB alpha):Line(a,alpha){}429 Seg(DB A,DB B,DB C):Line(A,B,C){}430431 inline int sgn(cPo p)const;432 inline int sgn(cLine l)const;433 inline bool qrt(cSeg l)const;434 inline int sgn(cSeg l)const;435 };436437 // 不相交-1 相交(不规范)0 相交(规范)1 438439 inline int Seg::sgn(cPo p)const{return -dott(p,a,b);}440 inline int Seg::sgn(cLine l)const{return sgn(Ts*l);}441442 // quick_rejection_test443 inline bool Seg::qrt(cSeg l)const{444 return min(a.x,b.x)<=max(l.a.x,l.b.x)&&min(l.a.x,l.b.x)<=max(a.x,b.x)&&445 min(a.y,b.y)<=max(l.a.y,l.b.y)&&min(l.a.y,l.b.y)<=max(a.y,b.y);446 }447 448449 inline int Seg::sgn(cSeg l)const{450 if (!qrt(l)) return -1;451452 /*return453 (dett(a,b,l.a)*dett(a,b,l.b)<=0 &&454 dett(l.a,l.b,a)*dett(l.a,l.b,b)<=0)?1:-1;*/455456 int d1=dett(a,b,l.a),d2=dett(a,b,l.b),d3=dett(l.a,l.b,a),d4=dett(l.a,l.b,b);457 if ((d1^d2)==-2&&(d3^d4)==-2)return 1;458 return ((!d1&&dott(l.a-a,l.a-b)<=0)||(!d2&&dott(l.b-a,l.b-b)<=0)||459 (!d3&&dott(a-l.a,a-l.b)<=0)||(!d4&&dott(b-l.a,b-l.b)<=0))?0:-1;460 }461462 //inline DB dist2(cLine l,cPo p){return sqr(fabs(dot(lt(l.d()), p-l.a)))/l.len2();}463 inline DB dist2(cLine l,cPo p){return sqr(fabs(det(l.d(), p-l.a)))/l.len2();}464465 inline DB dist2(cLine l1,cLine l2){return dett(l1,l2)?0:dist2(l1,l2.a);} 466467 inline DB dist2(cSeg l,cPo p){468 Popa=p-l.a,pb=p-l.b;469 if (dott(l.d(), pa) <= 0) return pa.len2();470 if (dott(l.d(), pb) >= 0) return pb.len2();471 return dist2(Line(l), p);472 }473 474475 inline DB dist2(cSeg s,cLine l){476 Po v1=s.a-l.a,v2=s.b-l.a;DB d1=det(l.d(),v1),d2=det(l.d(),v2);477 return sgn(d1)!=sgn(d2) ? 0 : sqr(min(fabs(d1), fabs(d2)))/l.len2();478 }479 inline DB dist2(cSeg l1,cSeg l2){480 if (~l1.sgn(l2)) return 0;481 else return min(dist2(l2,l1.a), dist2(l2,l1.b), dist2(l1,l2.a), dist2(l1,l2.b));482 }483 template<class T1, class T2> inline DB dist2(const T1& a, const T2& b){484 return dist2(b, a);485 }486487 } using namespace CG;//}488 //}489CMU_xiaodao 14
-490491 /** I/O Accelerator Interface .. **/ //{492 #define g (c=getchar())493 #define d isdigit(g)494 #define p x=x*10+c-’0’495 #define n x=x*10+’0’-c496 #define pp l/=10,p497 #define nn l/=10,n498 template<class T> inline T& RD(T &x){499 char c;while(!d);x=c-’0’;while(d)p;500 return x;501 }502 template<class T> inline T& RDD(T &x){503 char c;while(g,c!=’-’&&!isdigit(c));504 if (c==’-’){x=’0’-g;while(d)n;}505 else{x=c-’0’;while(d)p;}506 return x;507 }508 inline DB& RF(DB &x){509 //scanf(”%lf”, &x);510 char c;while(g,c!=’-’&&c!=’.’&&!isdigit(c));511 if(c==’-’)if(g==’.’){x=0;DB l=1;while(d)nn;x*=l;}512 else{x=’0’-c;while(d)n;if(c==’.’){DB l=1;while(d)nn;x*=l;}}513 else if(c==’.’){x=0;DB l=1;while(d)pp;x*=l;}514 else{x=c-’0’;while(d)p;if(c==’.’){DB l=1;while(d)pp;x*=l;}}515 return x;516 }517 #undef nn518 #undef pp519 #undef n520 #undef p521 #undef d522 #undef g523 inline char* RS(char *s){524 //gets(s);525 scanf(”%s”, s);526 return s;527 }528529 LL last_ans; int Case; template<class T> inline void OT(const T &x){530 //printf(”Case #%d: ”, ++Case);531 //printf(”%lld\n”, x);532 //printf(”%.4f\n”, x);533 printf(”%d\n”, x);534 //cout << x << endl;535 //last_ans = x;536 }537 //}538539540 //}/* .................................................................................................................................. */ 541542 int n;543544 int main(){545546 #ifndef ONLINE_JUDGE547 freopen(”in.txt”, ”r”, stdin);548 //freopen(”out.txt”, ”w”, stdout);549 #endif550551 Rush{ 552553 }554 }CMU_xiaodao 15
-0.2 G++ 调栈1 int __size__ = 256 << 20; // 256MB2 char *__p__ = (char*)malloc(__size__) + __size__;3 __asm__(”movl %0, %%esp\n” :: ”r”(__p__));
+#pragma comment(linker, "/STACK:36777216")
+//#pragma GCC optimize ("O2")
+#define LOCAL
+#include <functional>
+#include <algorithm>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <iomanip>
+#include <numeric>
+#include <cstring>
+#include <climits>
+#include <cassert>
+#include <complex>
+#include <cstdio>
+#include <string>
+#include <vector>
+#include <bitset>
+#include <queue>
+#include <stack>
+#include <cmath>
+#include <ctime>
+#include <list>
+#include <set>
+#include <map>
+using namespace std;
+
+#define REP(i, n) for (int i=0;i<n;++i)
+#define FOR(i, a, b) for (int i=a;i<b;++i)
+#define DWN(i, b, a) for (int i=b-1;i>=a;--i)
+#define REP_1(i, n) for (int i=1;i<=n;++i)
+#define FOR_1(i, a, b) for (int i=a;i<=b;++i)
+#define DWN_1(i, b, a) for (int i=b;i>=a;--i)
+#define REP_C(i, n) for (int n____=n,i=0;i<n____;++i)
+#define FOR_C(i, a, b) for (int b____=b,i=a;i<b____;++i)
+#define DWN_C(i, b, a) for (int a____=a,i=b-1;i>=a____;--i)
+#define REP_N(i, n) for (i=0;i<n;++i)
+#define FOR_N(i, a, b) for (i=a;i<b;++i)
+#define DWN_N(i, b, a) for (i=b-1;i>=a;--i)
+#define REP_1_C(i, n) for (int n____=n,i=1;i<=n____;++i)
+#define FOR_1_C(i, a, b) for (int b____=b,i=a;i<=b____;++i)
+#define DWN_1_C(i, b, a) for (int a____=a,i=b;i>=a____;--i)
+#define REP_1_N(i, n) for (i=1;i<=n;++i)
+#define FOR_1_N(i, a, b) for (i=a;i<=b;++i)
+#define DWN_1_N(i, b, a) for (i=b;i>=a;--i)
+#define REP_C_N(i, n) for (int n____=(i=0,n);i<n____;++i)
+#define FOR_C_N(i, a, b) for (int b____=(i=0,b);i<b____;++i)
+#define DWN_C_N(i, b, a) for (int a____=(i=b-1,a);i>=a____;--i)
+#define REP_1_C_N(i, n) for (int n____=(i=1,n);i<=n____;++i)
+#define FOR_1_C_N(i, a, b) for (int b____=(i=a,b);i<=b____;++i)
+#define DWN_1_C_N(i, b, a) for (int a____=(i=b,a);i>=a____;--i)
+
+#define ECH(it, A) for (__typeof((A).begin()) it=(A).begin(); it != (A).end(); ++it)
+#define rECH(it, A) for (__typeof((A).rbegin()) it=(A).rbegin(); it != (A).rend(); ++it)
+#define REP_S(i, str) for (char*i=str;*i;++i)
+#define REP_L(i, hd, suc) for (int i=hd;i;i=suc[i])
+#define REP_G(i, u) REP_L(i,hd[u],suc)
+#define REP_SS(x, s) for (int x=s;x;x=(x-1)&s)
+#define DO(n) for ( int ____n = n; ____n-->0; )
+#define REP_2(i, j, n, m) REP(i, n) REP(j, m)
+#define REP_2_1(i, j, n, m) REP_1(i, n) REP_1(j, m)
+#define REP_3(i, j, k, n, m, l) REP(i, n) REP(j, m) REP(k, l)
+#define REP_3_1(i, j, k, n, m, l) REP_1(i, n) REP_1(j, m) REP_1(k, l)
+#define REP_4(i, j, k, ii, n, m, l, nn) REP(i, n) REP(j, m) REP(k, l) REP(ii, nn)
+#define REP_4_1(i, j, k, ii, n, m, l, nn) REP_1(i, n) REP_1(j, m) REP_1(k, l) REP_1(ii, nn)
+
+#define ALL(A) A.begin(), A.end()
+#define LLA(A) A.rbegin(), A.rend()
+#define CPY(A, B) memcpy(A, B, sizeof(A))
+#define INS(A, P, B) A.insert(A.begin() + P, B)
+#define ERS(A, P) A.erase(A.begin() + P)
+#define LBD(A, x) (lower_bound(ALL(A), x) - A.begin())
+#define UBD(A, x) (upper_bound(ALL(A), x) - A.begin())
+#define CTN(T, x) (T.find(x) != T.end())
+#define SZ(A) int((A).size())
+#define PB push_back
+#define MP(A, B) make_pair(A, B)
+#define PTT pair<T, T>
+#define Ts *this
+#define rTs return Ts
+#define fi first
+#define se second
+#define re real()
+#define im imag()
+
+#define Rush for(int ____T=RD(); ____T--;)
+#define Display(A, n, m) {                      \
+REP(i, n){		                            \
+REP(j, m-1) cout << A[i][j] << " ";     \
+cout << A[i][m-1] << endl;		        \
+}						                    \
+}
+#define Display_1(A, n, m) {                    \
+REP_1(i, n){		                        \
+REP_1(j, m-1) cout << A[i][j] << " ";   \
+cout << A[i][m] << endl;		        \
+}						                    \
+}
+
+typedef long long LL;
+//typedef long double DB;
+typedef double DB;
+typedef unsigned uint;
+typedef unsigned long long uLL;
+
+typedef vector<int> VI;
+typedef vector<char> VC;
+typedef vector<string> VS;
+typedef vector<LL> VL;
+typedef vector<DB> VF;
+typedef set<int> SI;
+typedef set<string> SS;
+typedef map<int, int> MII;
+typedef map<string, int> MSI;
+typedef pair<int, int> PII;
+typedef pair<LL, LL> PLL;
+typedef vector<PII> VII;
+typedef vector<VI> VVI;
+typedef vector<VII> VVII;
+
+template<class T> inline T& RD(T &);
+template<class T> inline void OT(const T &);
+//inline int RD(){int x; return RD(x);}
+inline LL RD(){LL x; return RD(x);}
+inline DB& RF(DB &);
+inline DB RF(){DB x; return RF(x);}
+inline char* RS(char *s);
+inline char& RC(char &c);
+inline char RC();
+inline char& RC(char &c){scanf(" %c", &c); return c;}
+inline char RC(){char c; return RC(c);}
+//inline char& RC(char &c){c = getchar(); return c;}
+//inline char RC(){return getchar();}
+
+template<class T> inline T& RDD(T &);
+inline LL RDD(){LL x; return RDD(x);}
+
+template<class T0, class T1> inline T0& RD(T0 &x0, T1 &x1){RD(x0), RD(x1); return x0;}
+template<class T0, class T1, class T2> inline T0& RD(T0 &x0, T1 &x1, T2 &x2){RD(x0), RD(x1), RD(x2); return x0;}
+template<class T0, class T1, class T2, class T3> inline T0& RD(T0 &x0, T1 &x1, T2 &x2, T3 &x3){RD(x0), RD(x1), RD(x2), RD(x3); return x0;}
+template<class T0, class T1, class T2, class T3, class T4> inline T0& RD(T0 &x0, T1 &x1, T2 &x2, T3 &x3, T4 &x4){RD(x0), RD(x1), RD(x2), RD(x3), RD(x4); return x0;}
+template<class T0, class T1, class T2, class T3, class T4, class T5> inline T0& RD(T0 &x0, T1 &x1, T2 &x2, T3 &x3, T4 &x4, T5 &x5){RD(x0), RD(x1), RD(x2), RD(x3), RD(x4), RD(x5); return x0;}
+template<class T0, class T1, class T2, class T3, class T4, class T5, class T6> inline T0& RD(T0 &x0, T1 &x1, T2 &x2, T3 &x3, T4 &x4, T5 &x5, T6 &x6){RD(x0), RD(x1), RD(x2), RD(x3), RD(x4), RD(x5), RD(x6); return x0;}
+template<class T0, class T1> inline void OT(const T0 &x0, const T1 &x1){OT(x0), OT(x1);}
+template<class T0, class T1, class T2> inline void OT(const T0 &x0, const T1 &x1, const T2 &x2){OT(x0), OT(x1), OT(x2);}
+template<class T0, class T1, class T2, class T3> inline void OT(const T0 &x0, const T1 &x1, const T2 &x2, const T3 &x3){OT(x0), OT(x1), OT(x2), OT(x3);}
+template<class T0, class T1, class T2, class T3, class T4> inline void OT(const T0 &x0, const T1 &x1, const T2 &x2, const T3 &x3, const T4 &x4){OT(x0), OT(x1), OT(x2), OT(x3), OT(x4);}
+template<class T0, class T1, class T2, class T3, class T4, class T5> inline void OT(const T0 &x0, const T1 &x1, const T2 &x2, const T3 &x3, const T4 &x4, const T5 &x5){OT(x0), OT(x1), OT(x2), OT(x3), OT(x4), OT(x5);}
+template<class T0, class T1, class T2, class T3, class T4, class T5, class T6> inline void OT(const T0 &x0, const T1 &x1, const T2 &x2, const T3 &x3, const T4 &x4, const T5 &x5, const T6 &x6){OT(x0), OT(x1), OT(x2), OT(x3), OT(x4), OT(x5), OT(x6);}
+inline char& RC(char &a, char &b){RC(a), RC(b); return a;}
+inline char& RC(char &a, char &b, char &c){RC(a), RC(b), RC(c); return a;}
+inline char& RC(char &a, char &b, char &c, char &d){RC(a), RC(b), RC(c), RC(d); return a;}
+inline char& RC(char &a, char &b, char &c, char &d, char &e){RC(a), RC(b), RC(c), RC(d), RC(e); return a;}
+inline char& RC(char &a, char &b, char &c, char &d, char &e, char &f){RC(a), RC(b), RC(c), RC(d), RC(e), RC(f); return a;}
+inline char& RC(char &a, char &b, char &c, char &d, char &e, char &f, char &g){RC(a), RC(b), RC(c), RC(d), RC(e), RC(f), RC(g); return a;}
+inline DB& RF(DB &a, DB &b){RF(a), RF(b); return a;}
+inline DB& RF(DB &a, DB &b, DB &c){RF(a), RF(b), RF(c); return a;}
+inline DB& RF(DB &a, DB &b, DB &c, DB &d){RF(a), RF(b), RF(c), RF(d); return a;}
+inline DB& RF(DB &a, DB &b, DB &c, DB &d, DB &e){RF(a), RF(b), RF(c), RF(d), RF(e); return a;}
+inline DB& RF(DB &a, DB &b, DB &c, DB &d, DB &e, DB &f){RF(a), RF(b), RF(c), RF(d), RF(e), RF(f); return a;}
+inline DB& RF(DB &a, DB &b, DB &c, DB &d, DB &e, DB &f, DB &g){RF(a), RF(b), RF(c), RF(d), RF(e), RF(f), RF(g); return a;}
+inline void RS(char *s1, char *s2){RS(s1), RS(s2);}
+inline void RS(char *s1, char *s2, char *s3){RS(s1), RS(s2), RS(s3);}
+template<class T0,class T1>inline T0& RDD(T0&a, T1&b){RDD(a),RDD(b); return a;}
+template<class T0,class T1,class T2>inline T1& RDD(T0&a, T1&b, T2&c){RDD(a),RDD(b),RDD(c); return a;}
+
+template<class T> inline void RST(T &A){memset(A, 0, sizeof(A));}
+template<class T> inline void FLC(T &A, int x){memset(A, x, sizeof(A));}
+template<class T> inline void CLR(T &A){A.clear();}
+
+template<class T0, class T1> inline void RST(T0 &A0, T1 &A1){RST(A0), RST(A1);}
+template<class T0, class T1, class T2> inline void RST(T0 &A0, T1 &A1, T2 &A2){RST(A0), RST(A1), RST(A2);}
+template<class T0, class T1, class T2, class T3> inline void RST(T0 &A0, T1 &A1, T2 &A2, T3 &A3){RST(A0), RST(A1), RST(A2), RST(A3);}
+template<class T0, class T1, class T2, class T3, class T4> inline void RST(T0 &A0, T1 &A1, T2 &A2, T3 &A3, T4 &A4){RST(A0), RST(A1), RST(A2), RST(A3), RST(A4);}
+template<class T0, class T1, class T2, class T3, class T4, class T5> inline void RST(T0 &A0, T1 &A1, T2 &A2, T3 &A3, T4 &A4, T5 &A5){RST(A0), RST(A1), RST(A2), RST(A3), RST(A4), RST(A5);}
+template<class T0, class T1, class T2, class T3, class T4, class T5, class T6> inline void RST(T0 &A0, T1 &A1, T2 &A2, T3 &A3, T4 &A4, T5 &A5, T6 &A6){RST(A0), RST(A1), RST(A2), RST(A3), RST(A4), RST(A5), RST(A6);}
+template<class T0, class T1> inline void FLC(T0 &A0, T1 &A1, int x){FLC(A0, x), FLC(A1, x);}
+template<class T0, class T1, class T2> inline void FLC(T0 &A0, T1 &A1, T2 &A2, int x){FLC(A0, x), FLC(A1, x), FLC(A2, x);}
+template<class T0, class T1, class T2, class T3> inline void FLC(T0 &A0, T1 &A1, T2 &A2, T3 &A3, int x){FLC(A0, x), FLC(A1, x), FLC(A2, x), FLC(A3, x);}
+template<class T0, class T1, class T2, class T3, class T4> inline void FLC(T0 &A0, T1 &A1, T2 &A2, T3 &A3, T4 &A4, int x){FLC(A0, x), FLC(A1, x), FLC(A2, x), FLC(A3, x), FLC(A4, x);}
+template<class T0, class T1, class T2, class T3, class T4, class T5> inline void FLC(T0 &A0, T1 &A1, T2 &A2, T3 &A3, T4 &A4, T5 &A5, int x){FLC(A0, x), FLC(A1, x), FLC(A2, x), FLC(A3, x), FLC(A4, x), FLC(A5, x);}
+template<class T0, class T1, class T2, class T3, class T4, class T5, class T6> inline void FLC(T0 &A0, T1 &A1, T2 &A2, T3 &A3, T4 &A4, T5 &A5, T6 &A6, int x){FLC(A0, x), FLC(A1, x), FLC(A2, x), FLC(A3, x), FLC(A4, x), FLC(A5, x), FLC(A6, x);}
+template<class T> inline void CLR(priority_queue<T, vector<T>, less<T> > &Q){while (!Q.empty()) Q.pop();}
+template<class T> inline void CLR(priority_queue<T, vector<T>, greater<T> > &Q){while (!Q.empty()) Q.pop();}
+template<class T> inline void CLR(stack<T> &S){while (!S.empty()) S.pop();}
+template<class T> inline void CLR(queue<T> &Q){while (!Q.empty()) Q.pop();}
+
+template<class T0, class T1> inline void CLR(T0 &A0, T1 &A1){CLR(A0), CLR(A1);}
+template<class T0, class T1, class T2> inline void CLR(T0 &A0, T1 &A1, T2 &A2){CLR(A0), CLR(A1), CLR(A2);}
+template<class T0, class T1, class T2, class T3> inline void CLR(T0 &A0, T1 &A1, T2 &A2, T3 &A3){CLR(A0), CLR(A1), CLR(A2), CLR(A3);}
+template<class T0, class T1, class T2, class T3, class T4> inline void CLR(T0 &A0, T1 &A1, T2 &A2, T3 &A3, T4 &A4){CLR(A0), CLR(A1), CLR(A2), CLR(A3), CLR(A4);}
+template<class T0, class T1, class T2, class T3, class T4, class T5> inline void CLR(T0 &A0, T1 &A1, T2 &A2, T3 &A3, T4 &A4, T5 &A5){CLR(A0), CLR(A1), CLR(A2), CLR(A3), CLR(A4), CLR(A5);}
+template<class T0, class T1, class T2, class T3, class T4, class T5, class T6> inline void CLR(T0 &A0, T1 &A1, T2 &A2, T3 &A3, T4 &A4, T5 &A5, T6 &A6){CLR(A0), CLR(A1), CLR(A2), CLR(A3), CLR(A4), CLR(A5), CLR(A6);}
+template<class T> inline void CLR(T &A, int n){REP(i, n) CLR(A[i]);}
+
+template<class T> inline bool EPT(T &a){return a.empty();}
+template<class T> inline T& SRT(T &A){sort(ALL(A)); return A;}
+template<class T, class C> inline T& SRT(T &A, C cmp){sort(ALL(A), cmp); return A;}
+template<class T> inline T& RVS(T &A){reverse(ALL(A)); return A;}
+template<class T> inline T& UNQQ(T &A){A.resize(unique(ALL(A))-A.begin());return A;}
+template<class T> inline T& UNQ(T &A){SRT(A);return UNQQ(A);}
+template<class T, class C> inline T& UNQ(T &A, C cmp){SRT(A, cmp);return UNQQ(A);}
+
+
+//}
+
+/** Constant List .. **/ //{
+
+const int MOD = int(1e9) + 7;
+const int INF = 0x3f3f3f3f;
+const LL INFF = 0x3f3f3f3f3f3f3f3fLL;
+const DB EPS = 1e-9;
+const DB OO = 1e20;
+const DB PI = acos(-1.0); //M_PI;
+
+const int dx[] = {-1, 0, 1, 0};
+const int dy[] = {0, 1, 0, -1};
+
+//}
+
+/** Add On .. **/ //{
+// <<= '0. Nichi Joo ., //{
+
+template<class T> inline bool checkMin(T &a,const T b){return b < a ? a = b, 1 : 0;}
+template<class T> inline bool checkMax(T &a,const T b){return a < b ? a = b, 1 : 0;}
+template <class T, class C> inline bool checkUpd(T& a, const T b, C c){return c(b,a) ? a = b, 1 : 0;}
+template<class T> inline T min(T a, T b, T c){return min(min(a, b), c);}
+template<class T> inline T max(T a, T b, T c){return max(max(a, b), c);}
+template<class T> inline T min(T a, T b, T c, T d){return min(min(a, b), min(c, d));}
+template<class T> inline T max(T a, T b, T c, T d){return max(max(a, b), max(c, d));}
+template<class T> inline T min(T a, T b, T c, T d, T e){return min(min(min(a,b),min(c,d)),e);}
+template<class T> inline T max(T a, T b, T c, T d, T e){return max(max(max(a,b),max(c,d)),e);}
+template<class T> inline T sqr(T a){return a*a;}
+template<class T> inline T cub(T a){return a*a*a;}
+template<class T> inline T ceil(T x, T y){return (x - 1) / y + 1;}
+template<class T> T abs(T x){return x>0?x:-x;}
+inline int sgn(DB x){return x < -EPS ? -1 : x > EPS;}
+inline int sgn(DB x, DB y){return sgn(x - y);}
+
+inline DB cos(DB a, DB b, DB c){return (sqr(a)+sqr(b)-sqr(c))/(2*a*b);}
+inline DB cot(DB x){return 1./tan(x);};
+inline DB sec(DB x){return 1./cos(x);};
+inline DB csc(DB x){return 1./sin(x);};
+
+//}
+// <<= '1. Bitwise Operation ., //{
+namespace BO{
+    
+    inline bool _1(int x, int i){return bool(x&1<<i);}
+    inline bool _1(LL x, int i){return bool(x&1LL<<i);}
+    inline LL _1(int i){return 1LL<<i;}
+    inline LL _U(int i){return _1(i) - 1;};
+    
+    inline int reverse_bits(int x){
+        x = ((x >> 1) & 0x55555555) | ((x << 1) & 0xaaaaaaaa);
+        x = ((x >> 2) & 0x33333333) | ((x << 2) & 0xcccccccc);
+        x = ((x >> 4) & 0x0f0f0f0f) | ((x << 4) & 0xf0f0f0f0);
+        x = ((x >> 8) & 0x00ff00ff) | ((x << 8) & 0xff00ff00);
+        x = ((x >>16) & 0x0000ffff) | ((x <<16) & 0xffff0000);
+        return x;
+    }
+    
+    inline LL reverse_bits(LL x){
+        x = ((x >> 1) & 0x5555555555555555LL) | ((x << 1) & 0xaaaaaaaaaaaaaaaaLL);
+        x = ((x >> 2) & 0x3333333333333333LL) | ((x << 2) & 0xccccccccccccccccLL);
+        x = ((x >> 4) & 0x0f0f0f0f0f0f0f0fLL) | ((x << 4) & 0xf0f0f0f0f0f0f0f0LL);
+        x = ((x >> 8) & 0x00ff00ff00ff00ffLL) | ((x << 8) & 0xff00ff00ff00ff00LL);
+        x = ((x >>16) & 0x0000ffff0000ffffLL) | ((x <<16) & 0xffff0000ffff0000LL);
+        x = ((x >>32) & 0x00000000ffffffffLL) | ((x <<32) & 0xffffffff00000000LL);
+        return x;
+    }
+    
+    template<class T> inline bool odd(T x){return x&1;}
+    template<class T> inline bool even(T x){return !odd(x);}
+    template<class T> inline T low_bit(T x) {return x & -x;}
+    template<class T> inline T high_bit(T x) {T p = low_bit(x);while (p != x) x -= p, p = low_bit(x);return p;}
+    template<class T> inline T cover_bit(T x){T p = 1; while (p < x) p <<= 1;return p;}
+    template<class T> inline int cover_idx(T x){int p = 0; while (_1(p) < x ) ++p; return p;}
+    
+    inline int clz(int x){return __builtin_clz(x);}
+    inline int clz(LL x){return __builtin_clzll(x);}
+    inline int ctz(int x){return __builtin_ctz(x);}
+    inline int ctz(LL x){return __builtin_ctzll(x);}
+    inline int lg2(int x){return !x ? -1 : 31 - clz(x);}
+    inline int lg2(LL x){return !x ? -1 : 63 - clz(x);}
+    inline int low_idx(int x){return !x ? -1 : ctz(x);}
+    inline int low_idx(LL x){return !x ? -1 : ctz(x);}
+    inline int high_idx(int x){return lg2(x);}
+    inline int high_idx(LL x){return lg2(x);}
+    inline int parity(int x){return __builtin_parity(x);}
+    inline int parity(LL x){return __builtin_parityll(x);}
+    inline int count_bits(int x){return __builtin_popcount(x);}
+    inline int count_bits(LL x){return __builtin_popcountll(x);}
+    
+} using namespace BO;//}
+
+
+// <<= '2. Number Theory .,//{
+namespace NT{
+#define gcd __gcd
+    inline LL lcm(LL a, LL b){return a*b/gcd(a,b);}
+    
+    inline void INC(int &a, int b){a += b; if (a >= MOD) a -= MOD;}
+    inline int sum(int a, int b){a += b; if (a >= MOD) a -= MOD; return a;}
+    
+    /* 模数两倍刚好超 int 时。
+     inline int sum(uint a, int b){a += b; a %= MOD;if (a < 0) a += MOD; return a;}
+     inline void INC(int &a, int b){a = sum(a, b);}
+     */
+    
+    inline void DEC(int &a, int b){a -= b; if (a < 0) a += MOD;}
+    inline int dff(int a, int b){a -= b; if (a < 0) a  += MOD; return a;}
+    inline void MUL(int &a, int b){a = (LL)a * b % MOD;}
+    //inline int pdt(int a, int b){return (LL)a * b % MOD;}
+    inline int pdt(int x,int y) {
+        int ret; __asm__ __volatile__ ("\tmull %%ebx\n\tdivl %%ecx\n":"=d"(ret):"a"(x),"b"(y),"c"(MOD));
+        return ret;
+    }
+    
+    
+    inline int gcd(int m, int n, int &x, int &y){
+        
+        x = 1, y = 0; int xx = 0, yy = 1, q;
+        
+        while (1){
+            q = m / n, m %= n;
+            if (!m){x = xx, y = yy; return n;}
+            DEC(x, pdt(q, xx)), DEC(y, pdt(q, yy));
+            q = n / m, n %= m;
+            if (!n) return m;
+            DEC(xx, pdt(q, x)), DEC(yy, pdt(q, y));
+        }
+    }
+    
+    inline int sum(int a, int b, int c){return sum(a, sum(b, c));}
+    inline int sum(int a, int b, int c, int d){return sum(sum(a, b), sum(c, d));}
+    inline int pdt(int a, int b, int c){return pdt(a, pdt(b, c));}
+    inline int pdt(int a, int b, int c, int d){return pdt(pdt(a, b), pdt(c, d));}
+    
+    inline int pow(int a, LL b){
+        int c(1); while (b){
+            if (b&1) MUL(c, a);
+            MUL(a, a), b >>= 1;
+        }
+        return c;
+    }
+    
+    template<class T> inline T pow(T a, LL b){
+        T c(1); while (b){
+            if (b&1) c *= a;
+            a *= a, b >>= 1;
+        }
+        return c;
+    }
+    
+    template<class T> inline T pow(T a, int b){
+        return pow(a, (LL)b);
+    }
+    
+    inline int _I(int b){
+        int a = MOD, x1 = 0, x2 = 1, q; while (1){
+            q = a / b, a %= b;
+            if (!a) return x2;
+            DEC(x1, pdt(q, x2));
+            
+            q = b / a, b %= a;
+            if (!b) return x1;
+            DEC(x2, pdt(q, x1));
+        }
+    }
+    
+    inline void DIV(int &a, int b){MUL(a, _I(b));}
+    inline int qtt(int a, int b){return pdt(a, _I(b));}
+    
+    struct Int{
+        int val;
+        
+        operator int() const{return val;}
+        
+        Int(int _val = 0):val(_val){
+            val %= MOD; if (val < 0) val += MOD;
+        }
+        Int(LL _val):val(_val){
+            _val %= MOD; if (_val < 0) _val += MOD;
+            val = _val;
+        }
+        
+        Int& operator +=(const int& rhs){INC(val, rhs);rTs;}
+        Int operator +(const int& rhs) const{return sum(val, rhs);}
+        Int& operator -=(const int& rhs){DEC(val, rhs);rTs;}
+        Int operator -(const int& rhs) const{return dff(val, rhs);}
+        Int& operator *=(const int& rhs){MUL(val, rhs);rTs;}
+        Int operator *(const int& rhs) const{return pdt(val, rhs);}
+        Int& operator /=(const int& rhs){DIV(val, rhs);rTs;}
+        Int operator /(const int& rhs) const{return qtt(val, rhs);}
+        Int operator-()const{return MOD-*this;}
+    };
+    
+} using namespace NT;//}
+
+
+//}
+
+
+
+/** I/O Accelerator Interface .. **/ //{
+#define g (c=getchar())
+#define d isdigit(g)
+#define p x=x*10+c-'0'
+#define n x=x*10+'0'-c
+#define pp l/=10,p
+#define nn l/=10,n
+template<class T> inline T& RD(T &x){
+    char c;while(!d);x=c-'0';while(d)p;
+    return x;
+}
+template<class T> inline T& RDD(T &x){
+    char c;while(g,c!='-'&&!isdigit(c));
+    if (c=='-'){x='0'-g;while(d)n;}
+    else{x=c-'0';while(d)p;}
+    return x;
+}
+inline DB& RF(DB &x){
+    //scanf("%lf", &x);
+    char c;while(g,c!='-'&&c!='.'&&!isdigit(c));
+    if(c=='-')if(g=='.'){x=0;DB l=1;while(d)nn;x*=l;}
+    else{x='0'-c;while(d)n;if(c=='.'){DB l=1;while(d)nn;x*=l;}}
+    else if(c=='.'){x=0;DB l=1;while(d)pp;x*=l;}
+    else{x=c-'0';while(d)p;if(c=='.'){DB l=1;while(d)pp;x*=l;}}
+    return x;
+}
+#undef nn
+#undef pp
+#undef n
+#undef p
+#undef d
+#undef g
+inline char* RS(char *s){
+    //gets(s);
+    scanf("%s", s);
+    return s;
+}
+
+LL last_ans; int Case; template<class T> inline void OT(const T &x){
+    //printf("Case #%d: ", ++Case);
+    //printf("%lld\n", x);
+    //printf("%I64d\n", x);
+    //printf("%.9f\n", x);
+    //printf("%d\n", x);
+    cout << x << endl;
+    //last_ans = x;
+}
+
+
+//}/* .................................................................................................................................. */
+
