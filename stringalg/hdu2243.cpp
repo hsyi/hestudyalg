@@ -12,7 +12,7 @@
 #include <time.h>
 using namespace std;
 const int INF=0x3f3f3f3f;
-const int MAXN=35;
+const int MAXN=54;
 const int MAXW=26;
 
 typedef  unsigned long long ull;
@@ -84,8 +84,8 @@ MAT operator + (MAT const  &a,MAT const  &b){
     return ans;
 }
 
-
-MAT thisum( MAT const &a,ull b){
+/*
+MAT thisum( MAT const &a,ull b){ //二分求等比矩阵的和
     if(b==1) return a;
     MAT ans;
     MAT tmp;
@@ -108,7 +108,36 @@ MAT thisum( MAT const &a,ull b){
         //ans=(ans*(a^(b/2)))+ans+(a^b);
     }
     return ans;
+}*/
+
+MAT thisum(MAT const  &a,ull b){// 构造法求等比矩阵n项和 速度比二分快4倍
+    if(b==1) return a;
+    int nsz=a.sz*2;
+    MAT c;
+    for(int i=0;i<nsz;i++){
+        for(int j=0;j<nsz;j++){
+            if(i<a.sz && j<a.sz) c.m[i][j]=a.m[i][j];
+            else if(j>=a.sz && ((j-a.sz==i) || (j-a.sz==i-a.sz))) c.m[i][j]=1;
+            else {
+                c.m[i][j]=0;
+            }
+          //  printf("%llu ",c.m[i][j]);
+        }
+        //printf("\n");
+    }
+    b=b+1;
+    a.sz=nsz;
+    c=c^b;
+    MAT ans;
+    a.sz=nsz/2;
+    for(int i=0;i<a.sz;i++)
+        for(int j=0;j<a.sz;j++){
+            ans.m[i][j]=c.m[i][j+a.sz];
+            if(i==j) ans.m[i][j]--;
+        }
+    return ans;
 }
+
 struct AC_M{
     int ch[MAXN][MAXW];
     int val[MAXN];
@@ -213,6 +242,12 @@ int main(){
         MAT ansmat;
         ansmat=thisum(ac.m,l);
         ull ans=sumall(l);
+       /* for(int i=0;i<ansmat.sz;i++){
+            for(int j=0;j<ansmat.sz;j++){
+                printf("%llu ",ansmat.m[i][j]);
+            }
+            printf("\n");
+        }*/
         for(int i=0;i<ansmat.sz;i++){
             ans-=ansmat.m[0][i];
         }
