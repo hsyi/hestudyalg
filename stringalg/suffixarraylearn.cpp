@@ -15,8 +15,7 @@ using namespace std;
 const int INF=0x3f3f3f3f;
 const int MAXN=2000;
 char s[MAXN];
-const int MAXM=256;
-int sa[MAXN],t[MAXN],t2[MAXN],c[MAXM],n,*ranks;
+int sa[MAXN],t[MAXN],t2[MAXN],c[MAXN],n,*ranks;//c需要不同的rank那么大
 int height[MAXN];
 void build_sa(int m){
     int *x=t,*y=t2;
@@ -26,7 +25,7 @@ void build_sa(int m){
     for(int i=n-1;i>=0;i--) sa[--c[x[i]]]=i;
     for(int k=1;k<=n;k<<=1){
         int p=0;
-        for(int i=n-k;i<n;i++) y[p++]=i;//y时按第二关键词给的rank:控制第一关键字的读入顺序：因：基数排序是稳定排序
+        for(int i=n-k;i<n;i++) y[p++]=i;//y时按第二关键词排的序:控制第一关键字的读入顺序：因：基数排序是稳定排序
         for(int i=0;i<n;i++) if(sa[i]>=k) y[p++]=sa[i]-k;
         
         for(int i=0;i<m;i++) c[i]=0;
