@@ -13,7 +13,6 @@
 using namespace std;
 #define pb push_back
 #define mp make_pair
-#define sz(x) (int)x.size()
 #define REP(i, n) for (int i=0;i<n;++i)
 #define clr(x,a) memset(x,a,sizeof(x))
 typedef long long ll;
@@ -90,7 +89,7 @@ int findset(int x){
 Node *root[MAXN];
 
 int kth(Node *o,int k){
-    if(o==NULL || k<0 || k>o->s) return 0;
+    if(o==NULL || k<=0 || k>o->s) return 0;
     int s=(o->ch[1]==NULL?0:o->ch[1]->s);
     if(k==s+1) return o->v;
     else if(k>s+1) return kth(o->ch[0],k-s-1);
@@ -117,7 +116,7 @@ void add_edge(int x){
     int v=findset(to[x]);
     if(u==v) return;
     else {
-        if(root[u]->s<root[v]->s) {pa[u]=v;mergeto(root[u],root[v]);}
+        if(root[u]->s < root[v]->s) {pa[u]=v;mergeto(root[u],root[v]);}
         else  {pa[v]=u;mergeto(root[v],root[u]);}
     }
 }
@@ -140,10 +139,9 @@ void change_weight(int x,int v){
 
 int main(){
 #ifndef ONLINE_JUDGE
-    freopen("/Users/heshengyi/Downloads/in.txt","r",stdin);
+    //freopen("/Users/heshengyi/Downloads/in.txt","r",stdin);
     //freopen("/Users/heshengyi/Downloads/out.txt","w",stdout);
 #endif
-    srand(time(NULL));
     int kas=0;
     while(scanf("%d%d",&n,&m)==2 && n){
         for(int i=1;i<=n;i++) scanf("%d",&weight[i]);
@@ -163,7 +161,9 @@ int main(){
                 p=weight[x];
                 weight[x]=v;
             }
-            commands[c++]=(Command){type,x,p};
+            Command tmp;
+            tmp.type=type;tmp.x=x;tmp.p=p;
+            //commands[c++]=(Command){type,x,p};
         }
         for(int i=1;i<=n;i++){
             pa[i]=i;if(root[i]!=NULL) removetree(root[i]);
@@ -179,8 +179,9 @@ int main(){
              if(commands[i].type=='C')change_weight(commands[i].x,commands[i].p);
             
         }
-        printf("%d\n",query_cnt);
-        printf("Case %d: %.6lf\n",++kas,(double)query_tot/query_cnt);//强制转化一个就可以
+ //       printf("%d\n",query_cnt);
+ //       Case 1: 2
+        printf("Case %d: %.6lf\n",++kas,query_tot/(double)query_cnt);//强制转化一个就可以
     }
 
     return 0;
